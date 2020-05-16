@@ -1,3 +1,9 @@
+// TODO: write destroy() method
+// TODO: Fix optimization (handle a whole Node List on click)
+// TODO: Destructure proto
+
+// IDEA: Focus on tab -> select on enter
+
 import { utils } from './helpers/utils';
 import { dom as $ } from './helpers/dom';
 
@@ -60,7 +66,7 @@ export class Slider {
 
         setTimeout(() => {
             $.toggleClass($slider, false, CLASSES.rootUninit);
-        }, 100);
+        }, 50);
     }
 
     setSize() {

@@ -59,8 +59,8 @@ module.exports = {
         }),
         new CopyPlugin([
             {
-                from: path.relative(__dirname, 'img'),
-                to: path.relative(__dirname, 'img')
+                from: path.relative(__dirname, 'assets'),
+                to: path.relative(__dirname, 'assets')
             }
         ]),
         new MiniCssExtractPlugin({

@@ -1,3 +1,4 @@
+// TODO: Create Class
 const get = (selector) => {
     return document.querySelector(selector);
 };

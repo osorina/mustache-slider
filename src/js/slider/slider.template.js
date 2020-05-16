@@ -1,3 +1,4 @@
+// TODO: extends BaseComponent
 import { dom as $ } from './helpers/dom';
 
 const sliderTemplate = require('./templates/slider.mustache');
