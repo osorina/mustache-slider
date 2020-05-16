@@ -30,7 +30,7 @@ module.exports = {
     mode: 'development',
     entry: [
         '@babel/polyfill',
-        './index.js'
+        './js/app.js'
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -39,7 +39,8 @@ module.exports = {
     resolve: {
         extensions: ['.js'],
         alias: {
-            '@': path.resolve(__dirname, 'src')
+            '@': path.resolve(__dirname, 'src'),
+            '@s': path.resolve(__dirname, 'src/js/slider')
         }
     },
     devtool: isDev ? 'source-map' : false,
@@ -69,6 +70,18 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: jsLoaders()
+            },
+            {
+                test: /\.mustache$/,
+                loader: 'mustache-loader',
+                options: {
+                    tiny: true
+                }
+            },
+            {
                 test: /\.s[ac]ss$/i,
                 use: [
                     {
@@ -81,11 +94,6 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: jsLoaders()
             }
         ]
     }

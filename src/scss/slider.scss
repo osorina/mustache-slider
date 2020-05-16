@@ -1,0 +1,113 @@
+$slider-bg: #ccc;
+$slider-px: 60px;
+$slider-py: 20px;
+
+$active-color: #ff0;
+
+$arrow: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cG9seWdvbiBwb2ludHM9IjE2MCwxMjguNCAxOTIuMyw5NiAzNTIsMjU2IDM1MiwyNTYgMzUyLDI1NiAxOTIuMyw0MTYgMTYwLDM4My42IDI4Ny4zLDI1NiAiLz48L3N2Zz4=';
+
+.slider {
+    background: $slider-bg;
+    padding: $slider-py $slider-px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &.uninitialized {
+        * {
+            transition: none !important;
+        }
+    }
+
+    &__inner {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__track {
+        display: flex;
+        justify-content: flex-start;
+        position: absolute;
+        height: 100%;
+        min-width: 100%;
+        transform: translate3d(0, 0, 0);
+        transition: transform .27s ease-out;
+    }
+
+    &__item {
+        width: 50%;
+        height: 100%;
+        position: relative;
+        margin-right: 15px;
+        background-size: cover;
+
+        &:after {
+            content: '';
+            border: 5px solid $active-color;
+            opacity: 0;
+            transition: opacity .08s ease-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &.active {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__navigation {
+        button {
+            width: $slider-px;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            background: transparent;
+            opacity: 1;
+            transition: .27s;
+
+            &.disabled {
+                opacity: 0.2 !important;
+                pointer-events: none;
+            }
+
+            &[data-direction="prev"] {
+                left: 0;
+
+                i:before {
+                    transform: rotate(180deg)
+                }
+            }
+
+            &[data-direction="next"] {
+                right: 0;
+            }
+
+            i {
+                position: relative;
+                display: block;
+                margin: 0 auto;
+                width: 40px;
+                height: 40px;
+
+                &:before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-image: url($arrow);
+                    background-size: cover;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+#app {
+    background: #eee;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#gallery {
+    width: 75%;
+    height: 250px;
+    margin: auto;
+}

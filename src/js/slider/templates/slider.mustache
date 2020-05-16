@@ -1,0 +1,13 @@
+<div class="slider uninitialized">
+    <div class="slider__navigation">
+        <button data-direction="prev"><i></i></button>
+        <button data-direction="next"><i></i></button>
+    </div>
+    <div class="slider__inner">
+        <ul class="slider__track">
+            {{#slides}}
+                <li class="slider__item" data-slide-id="{{ id }}"style="background-image: url({{ src }})"></li>
+            {{/slides}}
+        </ul>
+    </div>
+</div>
