@@ -18,9 +18,12 @@ export class Slider {
             size
         } = utils.merge(DEFAULT_OPTIONS, options);
 
-        this.slides = photos;
-        this.length = photos.length;
-        this.lastIndex = photos.length - 1;
+        this.options = options;
+
+        this.slides = options.photos;
+
+        this.length = this.slides.length;
+        this.lastIndex = this.slides.length - 1;
 
         this.size = size;
         this.index = current;
